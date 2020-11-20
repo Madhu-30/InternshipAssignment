@@ -49,45 +49,42 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ProgrammingViewHo
         CountryModel currentItem = mList.get(position);
 
         if(currentItem.getName() != null && !currentItem.getName().isEmpty()) {
-            holder.country_name.setText(currentItem.getName());
+            holder.country.setText(currentItem.getName());
         }
         else {
-            holder.country_name.setVisibility(View.GONE);
+            holder.country.setVisibility(View.GONE);
         }
 
         if(currentItem.getCapital() != null && !currentItem.getCapital().isEmpty()) {
             holder.capital.setText(currentItem.getCapital());
         }
         else {
-            holder.capital_layout.setVisibility(View.GONE);
+            holder.capital_l.setVisibility(View.GONE);
         }
 
         if(currentItem.getRegion() != null && !currentItem.getRegion().isEmpty()) {
             holder.region.setText(currentItem.getRegion());
         }
         else {
-            holder.region_layout.setVisibility(View.GONE);
+            holder.region_l.setVisibility(View.GONE);
         }
 
         if(currentItem.getSubregion() != null && !currentItem.getSubregion().isEmpty()) {
             holder.sub_region.setText(currentItem.getSubregion());
         }
         else {
-            holder.sub_region_layout.setVisibility(View.GONE);
+            holder.sub_region_l.setVisibility(View.GONE);
         }
 
         if(String.valueOf(currentItem.getPopulation()) != null && !String.valueOf(currentItem.getPopulation()).isEmpty()) {
             holder.population.setText(String.valueOf(currentItem.getPopulation()));
         }
         else {
-            holder.population_layout.setVisibility(View.GONE);
+            holder.population_l.setVisibility(View.GONE);
         }
 
         if (currentItem.getFlag() != null && !currentItem.getFlag().isEmpty()) {
             fetchSvg(context, currentItem.getFlag(), holder.flag);
-        }
-        else {
-//            holder.flag.setImageResource(R.drawable.flag);
         }
 
         if(currentItem.getBorders() != null && currentItem.getBorders().size() != 0) {
@@ -103,7 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ProgrammingViewHo
             holder.borders.setText(borders.toString());
         }
         else {
-            holder.borders_layout.setVisibility(View.GONE);
+            holder.borders_l.setVisibility(View.GONE);
         }
 
         if(currentItem.getLanguages() != null && currentItem.getLanguages().size() != 0) {
@@ -119,7 +116,7 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ProgrammingViewHo
             holder.languages.setText(languages.toString());
         }
         else {
-            holder.languages_layout.setVisibility(View.GONE);
+            holder.languages_l.setVisibility(View.GONE);
         }
     }
 
@@ -130,20 +127,14 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ProgrammingViewHo
 
     public static class ProgrammingViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout capital_layout, region_layout, sub_region_layout, population_layout, borders_layout, languages_layout;
-        TextView country_name, capital, region, sub_region, population, borders, languages;
+        LinearLayout capital_l, region_l, sub_region_l, population_l, borders_l, languages_l;
+        TextView country, capital, region, sub_region, population, borders, languages;
         ImageView flag;
 
         private ProgrammingViewHolder(@NonNull View view) {
             super(view);
 
-            capital_layout = view.findViewById(R.id.capital_layout);
-            region_layout = view.findViewById(R.id.region_layout);
-            sub_region_layout = view.findViewById(R.id.sub_region_layout);
-            population_layout = view.findViewById(R.id.population_layout);
-            borders_layout = view.findViewById(R.id.borders_layout);
-            languages_layout = view.findViewById(R.id.languages_layout);
-            country_name = view.findViewById(R.id.country_name);
+            country = view.findViewById(R.id.country_name);
             capital = view.findViewById(R.id.capital);
             region = view.findViewById(R.id.region);
             sub_region = view.findViewById(R.id.sub_region);
@@ -151,6 +142,14 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ProgrammingViewHo
             borders = view.findViewById(R.id.borders);
             languages = view.findViewById(R.id.languages);
             flag = view.findViewById(R.id.flag);
+
+            capital_l = view.findViewById(R.id.capital_layout);
+            region_l = view.findViewById(R.id.region_layout);
+            sub_region_l = view.findViewById(R.id.sub_region_layout);
+            population_l = view.findViewById(R.id.population_layout);
+            borders_l = view.findViewById(R.id.borders_layout);
+            languages_l = view.findViewById(R.id.languages_layout);
+
         }
     }
 
@@ -165,7 +164,7 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ProgrammingViewHo
         httpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-//                target.setImageResource(R.drawable.flag);
+
             }
 
             @Override

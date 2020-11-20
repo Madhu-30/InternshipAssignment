@@ -81,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(pref.isFirstTimeLaunch()) {
-            if(((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() == null) {
-                recyclerView.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, "Network Unavailable", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            if(((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null) {
                 getDetails();
                 pref.setIsFirstTimeLaunch(false);
+            }
+            else {
+                recyclerView.setVisibility(View.GONE);
+                Toast.makeText(MainActivity.this, "Network Unavailable", Toast.LENGTH_SHORT).show();
             }
         }
         else {
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     adapter = new MyAdapter(MainActivity.this, countryModelArrayList);
                     recyclerView.setAdapter(adapter);
                 }
-                
+
                 else {
                     recyclerView.setVisibility(View.GONE);
                 }
